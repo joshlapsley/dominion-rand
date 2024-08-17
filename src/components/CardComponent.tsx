@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, CardType } from '../types';
-import CardBack from './Card-Back.jpg';
+import CardBack from './utils/Card-Back.jpg';
 import styled from 'styled-components';
 
 interface MyComponentProps {
