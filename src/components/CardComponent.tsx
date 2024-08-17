@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Card, CardType } from '../types';
 import CardBack from './utils/Card-Back.jpg';
 import styled from 'styled-components';
+import gears from './utils/gears-icon.png';
+import Params from './Params';
 
 interface MyComponentProps {
   card: Card;
@@ -25,35 +27,57 @@ const OverlayText = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%; /* Ensures the overlay takes up the full width of the image */
+  width: 80%;
   color: white;
-  font-size: 2.5vw; /* Dynamically adjusts the font size based on the viewport width */
+  font-size: 2.5vw;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 0.5em;
   border-radius: 5px;
-  text-align: center; /* Centers the text horizontally within the overlay */
+  text-align: center;
   z-index: 1; 
   cursor: pointer; 
+`;
+
+const GearsIcon = styled.img`
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 5vw;
+  height: 5vw;
+  z-index: 2;
+`;
+
+const ParamsOverlay = styled.div`
+  position: absolute;
+  top: 19vw;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); 
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const CardComponent: React.FC<MyComponentProps> = ({ card, cardType }) => {
   const [showBack, setShowBack] = useState(true);
   const [overylayText, setOverlayText] = useState(cardType);
+  const [showParams, setShowParams] = useState(false);
 
   const toggleBack = () => {
-    if(!overylayText) {
-      setShowBack(prev => !prev);
+    if (!overylayText) {
+      setShowBack((prev) => !prev);
     }
   };
 
-  const handleOverlayClick = () => {
-
-    setOverlayText(undefined)
+  const toggleParams = () => {
+    setShowParams((prev) => !prev);
   };
 
-  const randomizeCard = () => {
-
-  }
+  const handleOverlayClick = () => {
+    setOverlayText(undefined);
+  };
 
   return (
     <Container>
@@ -62,10 +86,16 @@ const CardComponent: React.FC<MyComponentProps> = ({ card, cardType }) => {
         src={showBack ? CardBack : card.image}
         onClick={toggleBack}
       />
+      {showBack && <GearsIcon alt="Gears Icon" src={gears} onClick={toggleParams} />}
       {overylayText && (
         <OverlayText onClick={handleOverlayClick}>
           {overylayText}
         </OverlayText>
+      )}
+      {showParams && (
+        <ParamsOverlay>
+          <Params onClose={toggleParams} setOverlay={setOverlayText}/>
+        </ParamsOverlay>
       )}
     </Container>
   );

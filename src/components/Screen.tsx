@@ -1,12 +1,15 @@
 import React from 'react';
-import CardsComponent from './CardsComponent';
 import { baseCards } from '../Base-Set/Cards';
+import CardsComponent from './CardsComponent';
 
 
 const Screen: React.FC = () => {
 
   return (
-   <CardsComponent cards={baseCards}/>
+    <>
+    <CardsComponent cards={baseCards} />
+    </>
+      
   );
 };
 
