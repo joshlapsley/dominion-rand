@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, CardType } from '../types';
+import { Card } from '../types';
 import CardBack from './utils/Card-Back.jpg';
 import styled from 'styled-components';
 import gears from './utils/gears-icon.png';
@@ -7,7 +7,7 @@ import Params from './Params';
 
 interface MyComponentProps {
   card: Card;
-  cardType?: CardType;
+  cardType?: string;
 }
 
 const Container = styled.div`
@@ -49,15 +49,12 @@ const GearsIcon = styled.img`
 
 const ParamsOverlay = styled.div`
   position: absolute;
-  top: 19vw;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); 
-  z-index: 3;
+  z-index: 100;
   display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const CardComponent: React.FC<MyComponentProps> = ({ card, cardType }) => {
