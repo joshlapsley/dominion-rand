@@ -1,15 +1,11 @@
 import React from 'react';
-import { baseCards } from '../Base-Set/Cards';
-import CardsComponent from './CardsComponent';
+import CardsAndRandomizeButton from './CardsAndRandomizeButton';
 
 
 const Screen: React.FC = () => {
 
   return (
-    <>
-    <CardsComponent cards={baseCards} />
-    </>
-      
+    <CardsAndRandomizeButton />
   );
 };
 

@@ -14,3 +14,8 @@ export type Card = {
     image: string,
     cost: number,
 }
+
+export type Reshuffledcard = {
+    card: Card;
+    exclusion?: string;
+}

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Card } from '../types';
+import React, { useEffect, useState } from 'react';
+import { Card, Reshuffledcard } from '../types';
 import CardBack from './utils/Card-Back.jpg';
 import styled from 'styled-components';
 import gears from './utils/gears-icon.png';
@@ -7,7 +7,8 @@ import Params from './Params';
 
 interface MyComponentProps {
   card: Card;
-  cardType?: string;
+  reRender?: boolean
+  handleReShuffles: (card: Reshuffledcard, action: string) => void;
 }
 
 const Container = styled.div`
@@ -57,14 +58,39 @@ const ParamsOverlay = styled.div`
   display: flex;
 `;
 
-const CardComponent: React.FC<MyComponentProps> = ({ card, cardType }) => {
+const CardComponent: React.FC<MyComponentProps> = ({ card, reRender, handleReShuffles }) => {
   const [showBack, setShowBack] = useState(true);
-  const [overylayText, setOverlayText] = useState(cardType);
+  const [overlayText, setOverlayText] = useState<string | undefined>(undefined);
   const [showParams, setShowParams] = useState(false);
 
+  useEffect(() => {
+    setShowBack(false);
+  },[reRender])
+
+  useEffect(() => {
+    if(overlayText) {
+      handleReShuffles(
+        {
+          card,
+          exclusion: overlayText,
+        },
+        "add",
+      )
+    }
+  },[overlayText])
+
   const toggleBack = () => {
-    if (!overylayText) {
-      setShowBack((prev) => !prev);
+    setShowBack((prev) => !prev);
+    if(showBack) { //If card is being turned upside remove the card from the shuffled list, 
+      handleReShuffles({
+        card,
+        exclusion: undefined,
+      }, "remove")
+    } else {
+      handleReShuffles({ //If card is being turned upside down add the card to the shuffled list
+        card,
+        exclusion: undefined,
+      }, "add")
     }
   };
 
@@ -73,6 +99,13 @@ const CardComponent: React.FC<MyComponentProps> = ({ card, cardType }) => {
   };
 
   const handleOverlayClick = () => {
+    handleReShuffles(
+      {
+        card,
+        exclusion: undefined,
+      },
+      "add",
+    )
     setOverlayText(undefined);
   };
 
@@ -82,11 +115,13 @@ const CardComponent: React.FC<MyComponentProps> = ({ card, cardType }) => {
         alt={card.name}
         src={showBack ? CardBack : card.image}
         onClick={toggleBack}
+        role="button"
+        draggable={false}
       />
-      {showBack && <GearsIcon alt="Gears Icon" src={gears} onClick={toggleParams} />}
-      {overylayText && (
+      {showBack && <GearsIcon alt="Gears Icon" src={gears} onClick={toggleParams} role="button" draggable={false}/>}
+      {showBack && overlayText && (
         <OverlayText onClick={handleOverlayClick}>
-          {overylayText}
+          {overlayText}
         </OverlayText>
       )}
       {showParams && (
