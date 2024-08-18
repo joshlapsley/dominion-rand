@@ -25,16 +25,17 @@ const CardsAndRandomizeButton: React.FC = () => {
     setShuffledDeck(shuffleDeck(shuffledDeck))
 
     let shuffledCards = [] as Card[];
-
+    let foundACardToReplace = false;
     for(let i = 0; i < 10; i++) {
       if(isCardBeingReShuffled(reShuffledCards, kingdom[i])) {
         for(let i = 0; i < shuffledDeck.length; i++) {
           if(!kingdom.includes(shuffledDeck[i]) && !shuffledCards.includes(shuffledDeck[i])) {
             shuffledCards.push(shuffledDeck[i]);
+            foundACardToReplace = true;
             break;
           }
         }
-        shuffledCards.push(BlankCard)
+        foundACardToReplace ? foundACardToReplace = false : shuffledCards.push(BlankCard);
       } else {
         shuffledCards.push(kingdom[i])
       }
