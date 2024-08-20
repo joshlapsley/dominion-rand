@@ -27,7 +27,7 @@ import witch from "./BaseSetImages/Witch.jpg"
 import workshop from "./BaseSetImages/Workshop.jpg"
 
 export const Artisan = {
-    set: "base",
+    set: "Base Set",
     name: "Artisan",
     cardTypes: ["payload", "gainer"],
     image: artisan,
@@ -35,7 +35,7 @@ export const Artisan = {
 } as Card
 
 export const Bandit = {
-    set: "base",
+    set: "Base Set",
     name: "Bandit",
     cardTypes: ["payload", "gainer"],
     image: bandit,
@@ -43,7 +43,7 @@ export const Bandit = {
 } as Card
 
 export const Bureaucrat = {
-    set: "base",
+    set: "Base Set",
     name: "Bureaucrat",
     cardTypes: ["payload", "gainer"],
     image: bureaucrat,
@@ -51,7 +51,7 @@ export const Bureaucrat = {
 } as Card
 
 export const Cellar = {
-    set: "base",
+    set: "Base Set",
     name: "Cellar",
     cardTypes: ["sifter"],
     image: cellar,
@@ -59,7 +59,7 @@ export const Cellar = {
 } as Card
 
 export const Chapel = {
-    set: "base",
+    set: "Base Set",
     name: "Chapel",
     cardTypes: ["trasher"],
     image: chapel,
@@ -67,7 +67,7 @@ export const Chapel = {
 } as Card
 
 export const Council_Room = {
-    set: "base",
+    set: "Base Set",
     name: "Council_Room",
     cardTypes: ["drawer"],
     image: council_room,
@@ -77,7 +77,7 @@ export const Council_Room = {
 
 
 export const Festival = {
-    set: "base",
+    set: "Base Set",
     name: "Festival",
     cardTypes: ["village", "payload"],
     image: festival,
@@ -86,7 +86,7 @@ export const Festival = {
 } as Card
 
 export const Gardens = {
-    set: "base",
+    set: "Base Set",
     name: "Gardens",
     cardTypes: ["victory"],
     image: gardens,
@@ -94,7 +94,7 @@ export const Gardens = {
 } as Card
 
 export const Harbinger = {
-    set: "base",
+    set: "Base Set",
     name: "Harbinger",
     cardTypes: ["cantrip"],
     image: harbinger,
@@ -102,7 +102,7 @@ export const Harbinger = {
 } as Card
 
 export const Laboratory = {
-    set: "base",
+    set: "Base Set",
     name: "Laboratory",
     cardTypes: ["cantrip", "drawer"],
     image: laboratory,
@@ -110,7 +110,7 @@ export const Laboratory = {
 } as Card
 
 export const Library = {
-    set: "base",
+    set: "Base Set",
     name: "Library",
     cardTypes: ["draw-to-x"],
     image: library,
@@ -118,7 +118,7 @@ export const Library = {
 } as Card
 
 export const Market = {
-    set: "base",
+    set: "Base Set",
     name: "Market",
     cardTypes: ["cantrip"],
     image: market,
@@ -127,7 +127,7 @@ export const Market = {
 } as Card
 
 export const Merchant = {
-    set: "base",
+    set: "Base Set",
     name: "Merchant",
     cardTypes: ["cantrip"],
     image: merchant,
@@ -135,7 +135,7 @@ export const Merchant = {
 } as Card
 
 export const Militia = {
-    set: "base",
+    set: "Base Set",
     name: "Militia",
     cardTypes: ["attack"],
     image: militia,
@@ -143,7 +143,7 @@ export const Militia = {
 } as Card
 
 export const Mine = {
-    set: "base",
+    set: "Base Set",
     name: "Mine",
     cardTypes: ["payload"],
     image: mine,
@@ -151,15 +151,15 @@ export const Mine = {
 } as Card
 
 export const Moat = {
-    set: "base",
+    set: "Base Set",
     name: "Moat",
     cardTypes: ["drawer", "reaction"],
     image: moat,
-    cost: 5,
+    cost: 2,
 } as Card
 
 export const Moneylender = {
-    set: "base",
+    set: "Base Set",
     name: "Moneylender",
     cardTypes: ["trasher"],
     image: moneylender,
@@ -168,7 +168,7 @@ export const Moneylender = {
 } as Card
 
 export const Poacher = {
-    set: "base",
+    set: "Base Set",
     name: "Poacher",
     cardTypes: ["cantrip"],
     image: poacher,
@@ -176,7 +176,7 @@ export const Poacher = {
 } as Card
 
 export const Remodel = {
-    set: "base",
+    set: "Base Set",
     name: "Remodel",
     cardTypes: ["trasher", "payload"],
     image: remodel,
@@ -184,7 +184,7 @@ export const Remodel = {
 } as Card
 
 export const Sentry = {
-    set: "base",
+    set: "Base Set",
     name: "Sentry",
     cardTypes: ["trasher", "cantrip", "sifter"],
     image: sentry,
@@ -192,7 +192,7 @@ export const Sentry = {
 } as Card
 
 export const Smithy = {
-    set: "base",
+    set: "Base Set",
     name: "Smithy",
     cardTypes: ["drawer"],
     image: smithy,
@@ -200,7 +200,7 @@ export const Smithy = {
 } as Card
 
 export const Throne_Room = {
-    set: "base",
+    set: "Base Set",
     name: "Throne_Room",
     cardTypes: ["throne"],
     image: throne_room,
@@ -209,7 +209,7 @@ export const Throne_Room = {
 } as Card
 
 export const Vassal = {
-    set: "base",
+    set: "Base Set",
     name: "Vassal",
     cardTypes: ["payload"],
     image: vassal,
@@ -217,7 +217,7 @@ export const Vassal = {
 } as Card
 
 export const Village = {
-    set: "base",
+    set: "Base Set",
     name: "Village",
     cardTypes: ["village"],
     image: village,
@@ -225,7 +225,7 @@ export const Village = {
 } as Card
 
 export const Witch = {
-    set: "base",
+    set: "Base Set",
     name: "Witch",
     cardTypes: ["drawer", "attack", "junker"],
     image: witch,
@@ -233,7 +233,7 @@ export const Witch = {
 } as Card
 
 export const Workshop = {
-    set: "base",
+    set: "Base Set",
     name: "Workshop",
     cardTypes: ["gainer", "payload"],
     image: workshop,

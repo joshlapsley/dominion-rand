@@ -1,22 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { cardTypes, categories, costs, expansions } from './utils/paramUtils';
 
 interface ParamsProps {
   onClose: () => void;
   setOverlay: (item: string) => void;
 }
-
-const categories = ["Expansion", "Cost", "Card Type"];
-
-const expansions = ["Base Set"];
-
-const costs = ["1", "2", "3", "4", "5", "6"];
-
-const cardTypes = [
-  "Village", "Drawer", "Trasher", "Payload", "Cantrip", "Draw-to-x", 
-  "Gainer", "Victory", "Sifter", "Treasure", "Attack", "Reaction", 
-  "Throne", "Junker",
-];
 
 const ParamContent = styled.ul`
   list-style: none;

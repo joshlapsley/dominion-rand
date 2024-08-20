@@ -12,10 +12,10 @@ export type Card = {
     trashType?: string,
     hasBuy?: Boolean,
     image: string,
-    cost: number,
+    cost: Number,
 }
 
 export type Reshuffledcard = {
     card: Card;
-    exclusion?: string;
+    param?: string;
 }

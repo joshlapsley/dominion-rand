@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { shuffleDeck } from './utils/shuffleDeck';
 import { Card, Reshuffledcard } from '../types';
 import { BlankCard } from './utils/BlankCard';
+import { isValidCardFromParam } from './utils/paramUtils';
 
 const Container = styled.div`
   display: grid;
@@ -24,26 +25,28 @@ const CardsAndRandomizeButton: React.FC = () => {
   const shuffleCards = () => {
     setShuffledDeck(shuffleDeck(shuffledDeck))
 
-    let shuffledCards = [] as Card[];
+    console.log(reShuffledCards)
+
+    let newKingdom = [] as Card[];
     let foundACardToReplace = false;
     for(let i = 0; i < 10; i++) {
       if(isCardBeingReShuffled(reShuffledCards, kingdom[i])) {
+        const paramBeingChecked = getParamByCard(reShuffledCards, kingdom[i]);
         for(let i = 0; i < shuffledDeck.length; i++) {
-          if(!kingdom.includes(shuffledDeck[i]) && !shuffledCards.includes(shuffledDeck[i])) {
-            shuffledCards.push(shuffledDeck[i]);
+          if(isValidCardFromParam(shuffledDeck[i], paramBeingChecked) && !kingdom.includes(shuffledDeck[i]) && !newKingdom.includes(shuffledDeck[i])) {
+            newKingdom.push(shuffledDeck[i]);
             foundACardToReplace = true;
             break;
           }
         }
-        foundACardToReplace ? foundACardToReplace = false : shuffledCards.push(BlankCard);
+        foundACardToReplace ? foundACardToReplace = false : newKingdom.push(BlankCard); //If no avalible cards, show a blank card
       } else {
-        shuffledCards.push(kingdom[i])
+        newKingdom.push(kingdom[i])
       }
     }
-    setKingdom(shuffledCards);
+    setKingdom(newKingdom);
     setReShuffledCards([]);
   }
-
   const shuffleAllCards = () => {
     
     setShuffledDeck(shuffleDeck(shuffledDeck))
@@ -53,7 +56,6 @@ const CardsAndRandomizeButton: React.FC = () => {
     }
     setKingdom(shuffledCards);
   }
-
   const isCardBeingReShuffled = (cards: Reshuffledcard[], card: Card) => {
     for(let i = 0; i<cards.length; i++) {
       if(cards[i].card === card) {
@@ -62,7 +64,6 @@ const CardsAndRandomizeButton: React.FC = () => {
     }
     return false;
   }
-
   const removeCardFromListOfReshuffles = (cards: Reshuffledcard[], card: Card) => {
     for(let i = 0; i<cards.length; i++) {
       if(cards[i].card === card) {
@@ -70,8 +71,15 @@ const CardsAndRandomizeButton: React.FC = () => {
       }
     }
   }
-
-  const handleReShuffles = (card: Reshuffledcard, action: string) => {
+  const getParamByCard = (reShuffledCards: Reshuffledcard[], card: Card) => {
+    for(let i = 0; i<reShuffledCards.length; i++) {
+      if(reShuffledCards[i].card === card) {
+        return reShuffledCards[i].param
+      }
+    }
+    return "none"
+  }
+  const handleReShuffles = (card: Reshuffledcard, action: string) => { // Function being passed down to card component
     let currentReShuffledCards = reShuffledCards;
     if(action === "add") {
       if(isCardBeingReShuffled(reShuffledCards, card.card)) {

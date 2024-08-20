@@ -63,34 +63,27 @@ const CardComponent: React.FC<MyComponentProps> = ({ card, reRender, handleReShu
   const [overlayText, setOverlayText] = useState<string | undefined>(undefined);
   const [showParams, setShowParams] = useState(false);
 
+  const handleTheCardsThatNeedToBeReshuffled = (card: Card, action: string, param?: string) => {
+    handleReShuffles({card, param}, action)
+
+  }
+
   useEffect(() => {
     setShowBack(false);
   },[reRender])
 
   useEffect(() => {
     if(overlayText) {
-      handleReShuffles(
-        {
-          card,
-          exclusion: overlayText,
-        },
-        "add",
-      )
+      handleTheCardsThatNeedToBeReshuffled(card, "add", overlayText)
     }
   },[overlayText])
 
   const toggleBack = () => {
     setShowBack((prev) => !prev);
     if(showBack) { //If card is being turned upside remove the card from the shuffled list, 
-      handleReShuffles({
-        card,
-        exclusion: undefined,
-      }, "remove")
+      handleTheCardsThatNeedToBeReshuffled(card, "remove", overlayText)
     } else {
-      handleReShuffles({ //If card is being turned upside down add the card to the shuffled list
-        card,
-        exclusion: undefined,
-      }, "add")
+      handleTheCardsThatNeedToBeReshuffled(card, "add", overlayText) //If card is being turned upside down add the card to the shuffled list
     }
   };
 
@@ -99,13 +92,7 @@ const CardComponent: React.FC<MyComponentProps> = ({ card, reRender, handleReShu
   };
 
   const handleOverlayClick = () => {
-    handleReShuffles(
-      {
-        card,
-        exclusion: undefined,
-      },
-      "add",
-    )
+    handleTheCardsThatNeedToBeReshuffled(card, "add", undefined)
     setOverlayText(undefined);
   };
 
